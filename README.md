@@ -1,5 +1,9 @@
 # Study4.TW Study4Love - 與大師對談 投影片
 
+這次我們邀請了高達 15 位講師，分享他們的專業知識和經驗，在一整天的議程中，您將可以盡情地享受 IT Infrastructure、Dev、Agile、DevOps、Azure、Database、AI...等相關的議題，無論您是初學者、轉換跑道者還是資深的技術人員，這裡皆有適合您的議程。共同學習，提出問題與講師交流，藉此精進您的開發技能。
+
+[Study4](http://study4.tw)
+
 ## Session
 
 ### Session 1
