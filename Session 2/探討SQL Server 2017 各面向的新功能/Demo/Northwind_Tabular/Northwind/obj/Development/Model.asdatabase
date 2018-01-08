@@ -1,0 +1,871 @@
+{
+  "name": "Northwind",
+  "compatibilityLevel": 1400,
+  "model": {
+    "name": "模型",
+    "culture": "zh-TW",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/ ;Northwind",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": ".",
+            "database": "Northwind"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": ".;Northwind",
+          "Username": "sa",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Categories",
+        "columns": [
+          {
+            "name": "CategoryID",
+            "dataType": "int64",
+            "sourceColumn": "CategoryID"
+          },
+          {
+            "name": "CategoryName",
+            "dataType": "string",
+            "sourceColumn": "CategoryName"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Northwind\",",
+                "    dbo_Categories = Source{[Schema=\"dbo\",Item=\"Categories\"]}[Data]",
+                "in",
+                "    dbo_Categories"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Products",
+        "columns": [
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "ProductName",
+            "dataType": "string",
+            "sourceColumn": "ProductName"
+          },
+          {
+            "name": "SupplierID",
+            "dataType": "int64",
+            "sourceColumn": "SupplierID"
+          },
+          {
+            "name": "CategoryID",
+            "dataType": "int64",
+            "sourceColumn": "CategoryID"
+          },
+          {
+            "name": "QuantityPerUnit",
+            "dataType": "string",
+            "sourceColumn": "QuantityPerUnit"
+          },
+          {
+            "name": "UnitPrice",
+            "dataType": "decimal",
+            "sourceColumn": "UnitPrice"
+          },
+          {
+            "name": "UnitsInStock",
+            "dataType": "int64",
+            "sourceColumn": "UnitsInStock"
+          },
+          {
+            "name": "UnitsOnOrder",
+            "dataType": "int64",
+            "sourceColumn": "UnitsOnOrder"
+          },
+          {
+            "name": "ReorderLevel",
+            "dataType": "int64",
+            "sourceColumn": "ReorderLevel"
+          },
+          {
+            "name": "Discontinued",
+            "dataType": "boolean",
+            "sourceColumn": "Discontinued"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Northwind\",",
+                "    dbo_Products = Source{[Schema=\"dbo\",Item=\"Products\"]}[Data]",
+                "in",
+                "    dbo_Products"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Order Details",
+        "columns": [
+          {
+            "name": "OrderID",
+            "dataType": "int64",
+            "sourceColumn": "OrderID"
+          },
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "UnitPrice",
+            "dataType": "decimal",
+            "sourceColumn": "UnitPrice"
+          },
+          {
+            "name": "Quantity",
+            "dataType": "int64",
+            "sourceColumn": "Quantity"
+          },
+          {
+            "name": "Discount",
+            "dataType": "double",
+            "sourceColumn": "Discount"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Northwind\",",
+                "    #\"dbo_Order Details\" = Source{[Schema=\"dbo\",Item=\"Order Details\"]}[Data]",
+                "in",
+                "    #\"dbo_Order Details\""
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Quantity 的總和",
+            "expression": "SUM([Quantity])",
+            "detailRowsDefinition": {}
+          }
+        ]
+      },
+      {
+        "name": "Suppliers",
+        "columns": [
+          {
+            "name": "SupplierID",
+            "dataType": "int64",
+            "sourceColumn": "SupplierID"
+          },
+          {
+            "name": "CompanyName",
+            "dataType": "string",
+            "sourceColumn": "CompanyName"
+          },
+          {
+            "name": "ContactName",
+            "dataType": "string",
+            "sourceColumn": "ContactName"
+          },
+          {
+            "name": "ContactTitle",
+            "dataType": "string",
+            "sourceColumn": "ContactTitle"
+          },
+          {
+            "name": "Address",
+            "dataType": "string",
+            "sourceColumn": "Address"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region"
+          },
+          {
+            "name": "PostalCode",
+            "dataType": "string",
+            "sourceColumn": "PostalCode"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "Phone",
+            "dataType": "string",
+            "sourceColumn": "Phone"
+          },
+          {
+            "name": "Fax",
+            "dataType": "string",
+            "sourceColumn": "Fax"
+          },
+          {
+            "name": "HomePage",
+            "dataType": "string",
+            "sourceColumn": "HomePage"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Northwind\",",
+                "    dbo_Suppliers = Source{[Schema=\"dbo\",Item=\"Suppliers\"]}[Data]",
+                "in",
+                "    dbo_Suppliers"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Orders",
+        "columns": [
+          {
+            "name": "OrderID",
+            "dataType": "int64",
+            "sourceColumn": "OrderID"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "string",
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "EmployeeID",
+            "dataType": "int64",
+            "sourceColumn": "EmployeeID"
+          },
+          {
+            "name": "OrderDate",
+            "dataType": "dateTime",
+            "sourceColumn": "OrderDate"
+          },
+          {
+            "name": "RequiredDate",
+            "dataType": "dateTime",
+            "sourceColumn": "RequiredDate"
+          },
+          {
+            "name": "ShippedDate",
+            "dataType": "dateTime",
+            "sourceColumn": "ShippedDate"
+          },
+          {
+            "name": "ShipVia",
+            "dataType": "int64",
+            "sourceColumn": "ShipVia"
+          },
+          {
+            "name": "Freight",
+            "dataType": "decimal",
+            "sourceColumn": "Freight"
+          },
+          {
+            "name": "ShipName",
+            "dataType": "string",
+            "sourceColumn": "ShipName"
+          },
+          {
+            "name": "ShipAddress",
+            "dataType": "string",
+            "sourceColumn": "ShipAddress"
+          },
+          {
+            "name": "ShipCity",
+            "dataType": "string",
+            "sourceColumn": "ShipCity"
+          },
+          {
+            "name": "ShipRegion",
+            "dataType": "string",
+            "sourceColumn": "ShipRegion"
+          },
+          {
+            "name": "ShipPostalCode",
+            "dataType": "string",
+            "sourceColumn": "ShipPostalCode"
+          },
+          {
+            "name": "ShipCountry",
+            "dataType": "string",
+            "sourceColumn": "ShipCountry"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Northwind\",",
+                "    dbo_Orders = Source{[Schema=\"dbo\",Item=\"Orders\"]}[Data]",
+                "in",
+                "    dbo_Orders"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Customers",
+        "columns": [
+          {
+            "name": "CustomerID",
+            "dataType": "string",
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "CompanyName",
+            "dataType": "string",
+            "sourceColumn": "CompanyName"
+          },
+          {
+            "name": "ContactName",
+            "dataType": "string",
+            "sourceColumn": "ContactName"
+          },
+          {
+            "name": "ContactTitle",
+            "dataType": "string",
+            "sourceColumn": "ContactTitle"
+          },
+          {
+            "name": "Address",
+            "dataType": "string",
+            "sourceColumn": "Address"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region"
+          },
+          {
+            "name": "PostalCode",
+            "dataType": "string",
+            "sourceColumn": "PostalCode"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "Phone",
+            "dataType": "string",
+            "sourceColumn": "Phone"
+          },
+          {
+            "name": "Fax",
+            "dataType": "string",
+            "sourceColumn": "Fax"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Northwind\",",
+                "    dbo_Customers = Source{[Schema=\"dbo\",Item=\"Customers\"]}[Data]",
+                "in",
+                "    dbo_Customers"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Employees",
+        "columns": [
+          {
+            "name": "EmployeeID",
+            "dataType": "int64",
+            "sourceColumn": "EmployeeID"
+          },
+          {
+            "name": "LastName",
+            "dataType": "string",
+            "sourceColumn": "LastName"
+          },
+          {
+            "name": "FirstName",
+            "dataType": "string",
+            "sourceColumn": "FirstName"
+          },
+          {
+            "name": "Title",
+            "dataType": "string",
+            "sourceColumn": "Title"
+          },
+          {
+            "name": "TitleOfCourtesy",
+            "dataType": "string",
+            "sourceColumn": "TitleOfCourtesy"
+          },
+          {
+            "name": "BirthDate",
+            "dataType": "dateTime",
+            "sourceColumn": "BirthDate"
+          },
+          {
+            "name": "HireDate",
+            "dataType": "dateTime",
+            "sourceColumn": "HireDate"
+          },
+          {
+            "name": "Address",
+            "dataType": "string",
+            "sourceColumn": "Address"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region"
+          },
+          {
+            "name": "PostalCode",
+            "dataType": "string",
+            "sourceColumn": "PostalCode"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "HomePhone",
+            "dataType": "string",
+            "sourceColumn": "HomePhone"
+          },
+          {
+            "name": "Extension",
+            "dataType": "string",
+            "sourceColumn": "Extension"
+          },
+          {
+            "name": "Notes",
+            "dataType": "string",
+            "sourceColumn": "Notes"
+          },
+          {
+            "name": "ReportsTo",
+            "dataType": "int64",
+            "sourceColumn": "ReportsTo"
+          },
+          {
+            "name": "PhotoPath",
+            "dataType": "string",
+            "sourceColumn": "PhotoPath"
+          },
+          {
+            "name": "FullName",
+            "dataType": "string",
+            "sourceColumn": "FullName"
+          },
+          {
+            "type": "calculated",
+            "name": "Age",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "DATEDIFF([BirthDate],NOW(),YEAR)"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Northwind\",",
+                "    dbo_Employees = Source{[Schema=\"dbo\",Item=\"Employees\"]}[Data],",
+                "    已新增自訂 = Table.AddColumn(dbo_Employees, \"自訂\", each [FirstName] & \" \" & [LastName]),",
+                "    已重新命名資料行 = Table.RenameColumns(已新增自訂,{{\"自訂\", \"FullName\"}})",
+                "in",
+                "    已重新命名資料行"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Shippers",
+        "columns": [
+          {
+            "name": "ShipperID",
+            "dataType": "int64",
+            "sourceColumn": "ShipperID"
+          },
+          {
+            "name": "CompanyName",
+            "dataType": "string",
+            "sourceColumn": "CompanyName"
+          },
+          {
+            "name": "Phone",
+            "dataType": "string",
+            "sourceColumn": "Phone"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Northwind\",",
+                "    dbo_Shippers = Source{[Schema=\"dbo\",Item=\"Shippers\"]}[Data]",
+                "in",
+                "    dbo_Shippers"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "EmployeeTerritories",
+        "columns": [
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "sourceColumn": "ID"
+          },
+          {
+            "name": "EmployeeID",
+            "dataType": "int64",
+            "sourceColumn": "EmployeeID"
+          },
+          {
+            "name": "TerritoryID",
+            "dataType": "string",
+            "sourceColumn": "TerritoryID"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Northwind\",",
+                "    dbo_EmployeeTerritories = Source{[Schema=\"dbo\",Item=\"EmployeeTerritories\"]}[Data]",
+                "in",
+                "    dbo_EmployeeTerritories"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Territories",
+        "columns": [
+          {
+            "name": "TerritoryID",
+            "dataType": "string",
+            "sourceColumn": "TerritoryID"
+          },
+          {
+            "name": "TerritoryDescription",
+            "dataType": "string",
+            "sourceColumn": "TerritoryDescription"
+          },
+          {
+            "name": "RegionID",
+            "dataType": "int64",
+            "sourceColumn": "RegionID"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Northwind\",",
+                "    dbo_Territories = Source{[Schema=\"dbo\",Item=\"Territories\"]}[Data]",
+                "in",
+                "    dbo_Territories"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Region",
+        "columns": [
+          {
+            "name": "RegionID",
+            "dataType": "int64",
+            "sourceColumn": "RegionID"
+          },
+          {
+            "name": "RegionDescription",
+            "dataType": "string",
+            "sourceColumn": "RegionDescription"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Northwind\",",
+                "    dbo_Region = Source{[Schema=\"dbo\",Item=\"Region\"]}[Data]",
+                "in",
+                "    dbo_Region"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "CalculatedTable 1",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Country",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Country]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "State",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[State]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "City",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[City]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Sales",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Sales]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": [
+                "UNION (",
+                "    ROW ( \"Country\", \"USA\", \"State\", \"WA\", \"City\", \"Seattle\", \"Sales\", 1000 ),",
+                "    ROW ( \"Country\", \"USA\", \"State\", \"WA\", \"City\", \"Seattle\", \"Sales\", 2000 ),",
+                "    ROW ( \"Country\", \"Taiwan\", \"State\", BLANK(), \"City\", \"Taipei\", \"Sales\", 500 )",
+                ")"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sales 的總和",
+            "expression": "SUM([Sales])",
+            "detailRowsDefinition": {}
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "階層1",
+            "hideMembers": "hideBlankMembers",
+            "levels": [
+              {
+                "name": "City",
+                "ordinal": 2,
+                "column": "City"
+              },
+              {
+                "name": "Country",
+                "ordinal": 0,
+                "column": "Country"
+              },
+              {
+                "name": "Sales",
+                "ordinal": 1,
+                "column": "Sales"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "fa49ba57-c111-448a-9e83-fb9634c13988",
+        "fromTable": "Products",
+        "fromColumn": "CategoryID",
+        "toTable": "Categories",
+        "toColumn": "CategoryID"
+      },
+      {
+        "name": "7daae68a-546b-4480-a718-6fe0c374178d",
+        "fromTable": "Order Details",
+        "fromColumn": "ProductID",
+        "toTable": "Products",
+        "toColumn": "ProductID"
+      },
+      {
+        "name": "2d310475-fb9b-4236-b0e4-a2e7bf58c58e",
+        "fromTable": "Products",
+        "fromColumn": "SupplierID",
+        "toTable": "Suppliers",
+        "toColumn": "SupplierID"
+      },
+      {
+        "name": "48b4de7f-d4b5-4002-befd-18384142518b",
+        "fromTable": "Order Details",
+        "fromColumn": "OrderID",
+        "toTable": "Orders",
+        "toColumn": "OrderID"
+      },
+      {
+        "name": "dd1984b8-35a9-4ae8-87ef-af846e6c5709",
+        "fromTable": "Orders",
+        "fromColumn": "CustomerID",
+        "toTable": "Customers",
+        "toColumn": "CustomerID"
+      },
+      {
+        "name": "6f1bba16-edff-4c26-af8c-c371dc7ac2f1",
+        "fromTable": "Orders",
+        "fromColumn": "EmployeeID",
+        "toTable": "Employees",
+        "toColumn": "EmployeeID"
+      },
+      {
+        "name": "f7d48d57-715a-472a-b6b1-e5b1ca64bc8d",
+        "fromTable": "Orders",
+        "fromColumn": "ShipVia",
+        "toTable": "Shippers",
+        "toColumn": "ShipperID"
+      },
+      {
+        "name": "fe29dd99-22d8-437c-b7f5-90b3c44c6cd2",
+        "fromTable": "EmployeeTerritories",
+        "fromColumn": "EmployeeID",
+        "toTable": "Employees",
+        "toColumn": "EmployeeID"
+      },
+      {
+        "name": "112e7b53-0d83-4c78-a17c-c6c08e3673b5",
+        "fromTable": "EmployeeTerritories",
+        "fromColumn": "TerritoryID",
+        "toTable": "Territories",
+        "toColumn": "TerritoryID"
+      },
+      {
+        "name": "2d3a8fa3-e20b-4d19-9572-4f24c6b7222d",
+        "fromTable": "Territories",
+        "fromColumn": "RegionID",
+        "toTable": "Region",
+        "toColumn": "RegionID"
+      }
+    ],
+    "roles": [
+      {
+        "name": "America",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "Customers",
+            "filterExpression": "[Country] in {\"USA\",\"Canada\"}"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "500"
+      }
+    ]
+  }
+}

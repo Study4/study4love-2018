@@ -1,0 +1,5 @@
+C:\SQL2017\SQLCLRDemo\bin\Debug\SQLCLRDemo.dacpac
+C:\SQL2017\SQLCLRDemo\obj\Debug\SQLCLRDemo.dll
+C:\SQL2017\SQLCLRDemo\obj\Debug\SQLCLRDemo.pdb
+C:\SQL2017\SQLCLRDemo\bin\Debug\SQLCLRDemo.dll
+C:\SQL2017\SQLCLRDemo\bin\Debug\SQLCLRDemo.pdb

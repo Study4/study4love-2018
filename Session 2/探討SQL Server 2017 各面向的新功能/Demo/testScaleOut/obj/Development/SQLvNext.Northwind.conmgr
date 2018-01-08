@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="SQLvNext.Northwind"
+  DTS:DTSID="{41452713-07E9-4350-BC3B-4B5EE61A98F3}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=SQLvNext;User ID=sa;Initial Catalog=Northwind;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAqOwvVd5A4UC0eq4EVpKMSwAAAAACAAAAAAAQZgAAAAEAACAAAACl9jsA3CviyqJTlhAx3+wMuSbaPk0IDEb++6em8sNVZgAAAAAOgAAAAAIAACAAAAAUK1g+BVg5fRiBKLQcI+/Wngxq3rTMUmMVmlZVeoGjzoAAAAC/b3JxGp0jhAai0XnjV/9iXIg4ht5yC2QC9NccaOa7FPnkvhoLx5/F+Cw7IklIAP5f2KVO/O6LTmF0UuWhg3CnEhMjQwnTItGw5qTBcnLofO98GJhG/mC20gbcr7qrpLzDBnOlDn2FZ6OTSLOClAmkCbro68j+WydLg7SHiI7830AAAADIMVGqQDhYg9cNul6JiI+kr5pF2qKqOceS7s9l7diOI4VZSA4K/HXwk9HzRvfJ67HoNSZmkLQtODNjrJQOaDQb</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

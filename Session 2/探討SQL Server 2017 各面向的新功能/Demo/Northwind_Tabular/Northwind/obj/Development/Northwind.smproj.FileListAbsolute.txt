@@ -1,0 +1,6 @@
+c:\users\administrator\documents\visual studio 2015\Projects\Northwind\Northwind\bin\Model.asdatabase
+c:\users\administrator\documents\visual studio 2015\Projects\Northwind\Northwind\bin\Model.deploymenttargets
+c:\users\administrator\documents\visual studio 2015\Projects\Northwind\Northwind\bin\Model.deploymentoptions
+c:\users\administrator\documents\visual studio 2015\Projects\Northwind\Northwind\obj\Development\Model.asdatabase
+c:\users\administrator\documents\visual studio 2015\Projects\Northwind\Northwind\obj\Development\Model.deploymentoptions
+c:\users\administrator\documents\visual studio 2015\Projects\Northwind\Northwind\obj\Development\Model.deploymenttargets
