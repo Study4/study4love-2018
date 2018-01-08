@@ -41,3 +41,4 @@
 * `五分鐘看完 C# 7.2` - Ouch Liu(劉耀群)
 * `ASP.NET Core MVC + Angular + PWA + Crawler Friendly` - 楊捷凱 Kevin
 * `h4bot 社群機器人` - Carl Su
+* [Agile Tour Taichung 2017](https://speakerdeck.com/chusiang/promo-the-agile-tour-taichung-2017)
