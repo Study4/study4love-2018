@@ -21,7 +21,7 @@
 ### Session 3
 
 * [資深碼儂的無題日常](https://hackmd.io/s/Hy64ANTmG#) - 董大偉 (David)
-* `轉移到微服務架構的必經之路 - 資料庫重構` - Andrew Wu
+* `轉移到微服務架構的必經之路 - 資料庫重構` - Andrew Wu  [錄影](https://www.facebook.com/andrew.blog.0928/videos/545139382528011/), [SlideShare](https://www.slideshare.net/chickenwu/ss-85814056)
 * `大家都是十里坡劍神？談談資料科學的<del>從開始到放棄</del>如何從學習、試誤到從架構性思考應用與服務` - 孫玉峰
 
 ### Session 4
